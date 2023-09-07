@@ -1,18 +1,18 @@
-function createTypesLi(types) {
-  return types.map((object) => `<li class="type">${object.type.name}</li>`);
-}
+// function createTypesLi(types) {
+//   return types.map((object) => `<li class="type">${object.type.name}</li>`);
+// }
 
 function createPokemon(pokemon) {
   return `
-  <li class="pokemon">
+  <li class="pokemon ${pokemon.type}">
     <div class="pokemonHeader">
       <span class="name">${pokemon.name}</span>  <span class="number">${pokemon.id}</span>
     </div>
   <div class="details">
       <ol class="types">
-        ${createTypesLi(pokemon.types).join('')}
+        ${pokemon.types.map((type) => `<li class="${type}">${type}</li>`).join('')}
       </ol>
-      <img src="${pokemon.sprites.other.dream_world.front_default}">
+      <img src="${pokemon.image}">
   </div>
 </li> `;
 };
