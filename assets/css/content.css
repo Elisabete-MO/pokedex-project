@@ -3,7 +3,6 @@
   flex-flow: row wrap;
   justify-content: space-evenly;
   list-style: none;
-  /* overflow-y: scroll; */
   padding: 0;
   margin: 0;
 }
@@ -15,7 +14,7 @@
   font-size: 1.3rem;
   justify-content: space-between;
   margin: 0.5rem 0.25rem;
-  min-width: 188px;
+  min-width: 182px;
   padding: 0.8rem;
   width: 18.5%;
 }
@@ -28,6 +27,7 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  text-transform: capitalize;
 }
 
 .pokemon .number {
@@ -44,16 +44,18 @@
 
 .pokemon .details {
   align-items: center;
+  align-self: center;
   display: flex;
   flex-direction: row;
-  height: auto;
+  height: 100%;
   justify-content: space-between;
 }
 
 .pokemon .details img {
+  align-self: center;
   font-size: 0.8rem;
   max-width: 100%;
-  height: auto;
+  /* height: auto; */
   width: 50%;
 }
 
@@ -108,7 +110,7 @@
   opacity: 0.9;
 }
 
-.eletric {
+.electric {
   background-color:#f7cf2e;
   opacity: 0.9;
 }
