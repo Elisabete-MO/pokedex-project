@@ -12,6 +12,14 @@ function pokeapiToPokemon(pokeapi) {
   pokemon.types = types;
   pokemon.type = type;
 
+  pokemon.weight = pokeapi.weight;
+  pokemon.height = pokeapi.height;
+
+  const abilities = pokeapi.abilities.map((ability) => ability.ability.name);
+  const [ability] = abilities;
+
+  pokemon.abilities = abilities;
+
   return pokemon;
 };
 

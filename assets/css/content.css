@@ -60,13 +60,15 @@
 }
 
 .pokemon .types {
+  display: flex;
+  flex-direction: column;
   list-style: none;
   margin: 0;
   padding: 0;
   width: 40%;
 }
 
-.pokemon .types li {
+.pokemon .types span {
   border-radius: 15px;
   filter: brightness(1.2);
   font-size: clamp(0.8rem, 0.8rem + 1.4vw, 1.6vw);
