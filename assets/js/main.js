@@ -1,20 +1,16 @@
-const bodyElement = document.body;
-const footerElement = document.querySelector('.footer');
 const pokemonOl = document.querySelector('.pokemons');
 
 let limit = 1281;
 let offset = 0;
 
-function handleClickPokemon(event) {
+async function handleClickPokemon(event) {
   const listItem = event.target.closest('li');
   if (listItem) {
     const pokemonName = listItem.querySelector('.name').textContent;
     const newPageURL = `details.html?name=${pokemonName}`;
+    localStorage.setItem('pokemonName', pokemonName);
     window.location.href = newPageURL;
-    pokeApi.getPokemon(pokemonName).then((pokemon) => {
-      bodyElement.insertBefore(createDetail(pokemon), footerElement);
-    });
-  }
+  } 
 }
 
 function createPokemon(pokemon) {
@@ -64,7 +60,10 @@ btnNext.addEventListener('click', () => {
   offset += 10;
   pokeApi.getPokemonList(offset, 10).then((pokemonList = []) => {
     const pokemonOl = document.querySelector('.pokemons');
-    pokemonOl.innerHTML = pokemonList.map(createPokemon).join('');
+    pokemonList.forEach((pokemon) => {
+      const pokemonLi = createPokemon(pokemon);
+      pokemonOl.appendChild(pokemonLi);
+    });
   });
 });
 
@@ -73,7 +72,10 @@ btnPrev.addEventListener('click', () => {
   offset -= 10;
   pokeApi.getPokemonList(offset, 10).then((pokemonList = []) => {
     const pokemonOl = document.querySelector('.pokemons');
-    pokemonOl.innerHTML = pokemonList.map(createPokemon).join('');
+    pokemonList.forEach((pokemon) => {
+      const pokemonLi = createPokemon(pokemon);
+      pokemonOl.appendChild(pokemonLi);
+    });
   });
 });
 

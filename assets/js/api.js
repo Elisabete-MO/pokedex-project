@@ -25,6 +25,16 @@ function pokeapiToPokemon(pokeapi) {
 
 // https://pokeapi.co/api/v2/pokemon/9/
 pokeApi.getPokemon = (pokemon) => {
+  if(!pokemon.url) {
+    url = `https://pokeapi.co/api/v2/pokemon/${pokemon}/`;
+    return fetch(url)
+      .then((response) => response.json())
+      .then(pokeapiToPokemon)
+      .then((pokemon) => {
+        console.log(pokemon);
+        return pokemon;
+      })
+  } 
   return fetch(pokemon.url)
     .then((response) => response.json())
     .then(pokeapiToPokemon)
